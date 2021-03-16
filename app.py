@@ -6,11 +6,12 @@ import os
 from PIL import Image
 from gcp_service import surp
 from Estatistic_service import select
+import eduq as ed
 
 def reset():
     imagem = Image.open("./image/mari.png")
     st.sidebar.image(imagem)
-    dp = st.sidebar.selectbox('Selecione o serviço desejado:', ("Serviços:","Gestão de conhecimentos","Vestibular Marie Curie"))
+    dp = st.sidebar.selectbox('Selecione o serviço desejado:', ("Serviços:","Gestão de conhecimentos","Vestibular Marie Curie","Estatisticas da educo"))
     return dp
 
 def corp(dp):
@@ -21,6 +22,8 @@ def corp(dp):
             surp(dv)
         elif dp == "Vestibular Marie Curie":
             select()
+        elif dp == "Estatisticas da educo":
+            ed.dashboard()
         else:
             image = Image.open("./image/logo.png")
             st.image(image, use_column_width= False)
